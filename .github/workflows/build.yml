@@ -11,7 +11,7 @@ jobs:
       - name: Compile
         run: cl generate.c
       - name: Run
-        run: generate.exe
+        run: .\generate.exe
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
