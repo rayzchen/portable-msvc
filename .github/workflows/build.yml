@@ -1,0 +1,19 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    name: MSVC
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ilammy/msvc-dev-cmd@v1
+        name: Set up MSVC
+      - name: Compile
+        run: cl generate.c
+      - name: Run
+        run: generate.exe
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: MSVC
+          path: msvc
